@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Estilização da barra de rolagem */
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+  border: 3px solid #f0f0f0;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Header e Menu */
+.content {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1e1f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 1.6rem;
+}
+
+.lista-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lista-menu li a {
+  color: white;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in;
+}
+
+.lista-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 4px solid #ff5;
+  color: #ff5;
+}
+
+/* Primeira seção */
+.primeira-section {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(29, 29, 29, 0.8), rgba(29, 29, 29, 0.8)),
+    url("../image/Papel\ de\ parede\ \ comercial\ chalkboard\ \ P&B.jpg")
+      center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.primeira-section {
+  color: rgba(177, 177, 177);
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+.primeira-section h2 {
+  color: #ff5;
+  font-size: 2rem;
+}
+
+.btn button {
+  width: 230px;
+  height: 60px;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #ff5;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+  margin-top: 2rem;
+  transition: all 0.2s ease-in;
+}
+
+.btn button:hover {
+  border: 1px solid #ff5;
+  background-color: transparent;
+  color: #ff5;
+}
+
+/* Segunda seção */
+.segunda-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.segunda-section h1 {
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.imaga-exemplo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.2s ease-in;
+}
+
+.imaga-exemplo img:hover {
+  border: 2px solid #ff5;
+  transform: scale(1.1);
+}
+
+/* Terceira seção (FAQ) */
+.faq-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fffbe6;
+  border: 1px solid #d4b773;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.faq-header {
+  padding: 15px;
+  background: #f9f3d6;
+  border-bottom: 2px solid #d4b773;
+}
+
+.faq-header h2 {
+  margin: 0;
+  color: #b5893e;
+  font-size: 1.8rem;
+}
+
+.faq-header p {
+  margin: 5px 0;
+  font-size: 1.4rem;
+  color: #7a6a48;
+}
+
+.faq-item {
+  border-top: 1px solid #d4b773;
+}
+
+.faq-question {
+  width: 100%;
+  background: #fffbe6;
+  border: none;
+  text-align: left;
+  padding: 10px;
+  font-size: 1.6rem;
+  color: #b5893e;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #ffe5b4;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background-color: #fff;
+  padding: 0 10px;
+  font-size: 1.4rem;
+  color: #7a6a48;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+}
+
+/*para celular*/
+
+/* Estilos para telas menores (dispositivos móveis) */
+@media (max-width: 768px) {
+  /* Header */
+  .content {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  .logo h3 {
+    font-size: 1.4rem;
+  }
+
+  .lista-menu {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .lista-menu li a {
+    font-size: 1.6rem;
+  }
+
+  /* Primeira Seção */
+  .primeira-section {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .primeira-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .primeira-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn button {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  /* Segunda Seção */
+  .segunda-section {
+    padding: 2rem 1rem;
+  }
+
+  .segunda-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .imaga-exemplo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Terceira Seção (FAQ) */
+  .faq-container {
+    max-width: 90%;
+    margin: 1rem auto;
+  }
+
+  .faq-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .faq-header p {
+    font-size: 1.2rem;
+  }
+
+  .faq-question {
+    font-size: 1.4rem;
+  }
+
+  .faq-answer {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Estilos específicos para telas muito pequenas (ex: celulares antigos) */
+  .content {
+    padding: 0.5rem;
+  }
+
+  .logo img {
+    width: 35px;
+  }
+
+  .logo h3 {
+    font-size: 1.2rem;
+  }
+
+  .lista-menu li a {
+    font-size: 1.4rem;
+  }
+
+  .primeira-section h1 {
+    font-size: 2rem;
+  }
+
+  .primeira-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn button {
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .segunda-section h1 {
+    font-size: 1.6rem;
+  }
+
+  .imaga-exemplo img {
+    width: 40px;
+    height: 40px;
+  }
+}
+/*fim*/
+
+/* para celular 2*/
+
+@media (max-width: 768px) {
+  .lista-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px; /* Ajuste conforme a altura do header */
+    right: 0;
+    background-color: #1f1e1f;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+
+  .lista-menu li {
+    text-align: center;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger:focus {
+    outline: none;
+  }
+
+  /* Mostra o menu quando a classe "active" está presente */
+  .lista-menu.active {
+    display: flex;
+  }
+}
