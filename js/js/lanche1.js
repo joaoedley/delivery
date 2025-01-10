@@ -146,7 +146,7 @@ Telefone: ${formData.telefone}
 Retirada no local`;
   }
 
-  const numero = "5587996630782"; // Número do WhatsApp no formato internacional
+  const numero = "5587999927809"; // Número do WhatsApp no formato internacional
   const whatsappUrl = `https://wa.me/${numero}?text=${encodeURIComponent(
     mensagem
   )}`;
