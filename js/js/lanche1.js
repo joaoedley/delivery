@@ -49,10 +49,22 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
     const selectedPontoCarne =
       document.querySelector('input[name="ponto_carne"]:checked')?.value ||
       "Não selecionado";
+
+    // Captura os adicionais selecionados
+    let adicionais = Array.from(
+      document.querySelectorAll(".adicional-checkbox:checked")
+    );
+
+    // Calcula o preço total dos adicionais
     const selectedAdicionais =
-      Array.from(document.querySelectorAll(".adicional-checkbox:checked"))
-        .map((checkbox) => checkbox.dataset.name)
-        .join(", ") || "Nenhum adicional";
+      adicionais.map((checkbox) => checkbox.dataset.name).join(", ") ||
+      "Nenhum adicional";
+
+    const adicionaisPrice = adicionais
+      .map((checkbox) => parseFloat(checkbox.dataset.price))
+      .reduce((acc, curr) => acc + curr, 0); // Soma os preços dos adicionais
+
+    const totalItemPrice = price + adicionaisPrice; // Preço total do item com adicionais
 
     const itemName = `${name} | Pão: ${selectedPao} | Ponto da Carne: ${selectedPontoCarne} | Adicionais: ${selectedAdicionais}`;
 
@@ -60,7 +72,7 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
     if (existingItem) {
       existingItem.quantity += 1; // Incrementa a quantidade
     } else {
-      cartItems.push({ name: itemName, price, quantity: 1 });
+      cartItems.push({ name: itemName, price: totalItemPrice, quantity: 1 });
     }
 
     saveCartToLocalStorage(); // Atualiza o localStorage
