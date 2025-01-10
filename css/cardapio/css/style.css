@@ -144,12 +144,40 @@ p {
   color: #c0392b;
   white-space: nowrap;
 }
+.voltar {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ff9900;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+.voltar:hover {
+  background-color: #e68a00;
+  transform: scale(1.05);
+}
+
+.voltar a {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.voltar a:hover {
+  text-decoration: underline;
+}
 /* Responsividade */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
     padding: 10px;
+  }
+  .voltar {
+    bottom: 2px;
   }
 
   .primeira.section {
