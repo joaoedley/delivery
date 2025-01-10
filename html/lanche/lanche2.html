@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burguer Costela</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../../../css/cardapio/css/lanche1.css" />
+  </head>
+  <body>
+    <section class="Primeira-section">
+      <main class="main-class">
+        <div class="conteiner">
+          <h1>Burguer Costela</h1>
+          <img
+            src="../../../image/lanchonet1/img/hamburgue.webp"
+            alt="Hamburguer Costela"
+          />
+          <p>
+            Pão de hamburguer, hamburguer bovino duplo, queijo prato, cebola
+            roxa, tomate, alface e maionese
+          </p>
+          <span class="preco">R$ <strong>21,90</strong></span>
+
+          <!-- Opções de pão -->
+          <div class="opcoes">
+            <h2>Qual pão?</h2>
+            <p>OBRIGATÓRIO | máximo 1</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="tipo-pao-checkbox"
+                  name="pao"
+                  value="hamburguer"
+                />
+                Pão de hamburger
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="tipo-pao-checkbox"
+                  name="pao"
+                  value="frances"
+                />
+                Pão francês
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="tipo-pao-checkbox"
+                  name="pao"
+                  value="australiano"
+                />
+                Pão Australiano
+              </label>
+            </form>
+          </div>
+
+          <!-- Opções de ponto da carne -->
+          <div class="opcoes">
+            <h2>Ponto da carne?</h2>
+            <p>OBRIGATÓRIO | máximo 1</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="ponto-carne-checkbox"
+                  name="ponto_carne"
+                  value="mal_passada"
+                />
+                Mal passada
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="ponto-carne-checkbox"
+                  name="ponto_carne"
+                  value="ao_ponto"
+                />
+                Ao ponto
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="ponto-carne-checkbox"
+                  name="ponto_carne"
+                  value="bem_passada"
+                />
+                Bem passada
+              </label>
+            </form>
+          </div>
+
+          <!-- Adicionais -->
+          <div class="opcoes">
+            <h2>Algum adicional?</h2>
+            <p>Opcional máximo 5</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Cheddar"
+                  data-price="1.00"
+                />
+                Cheddar 1,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Cebola Roxa Caramelizaad"
+                  data-price="1.00"
+                />
+                Cebola roxa caramelizada 1,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Catupiry"
+                  data-price="1.50"
+                />
+                Catupiry Original 1,50
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Ovo Frito"
+                  data-price="0.50"
+                />
+                Ovo Frito 0,50
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Bacon Defumado"
+                  data-price="1.00"
+                />
+                Bacon Defumado 1,00
+              </label>
+            </form>
+          </div>
+          <button
+            class="add-to-cart-btn"
+            data-name="Burguer Costela"
+            data-price="21.90"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </main>
+    </section>
+
+    <footer>
+      <!-- Botão do carrinho -->
+      <div
+        class="cart-button"
+        data-bs-toggle="modal"
+        data-bs-target="#cartModal"
+      >
+        <i class="bi bi-cart"></i>
+        <span id="cart-count">0</span>
+      </div>
+
+      <!-- Modal do carrinho -->
+      <div
+        class="modal fade"
+        id="cartModal"
+        tabindex="-1"
+        aria-labelledby="cartModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cartModalLabel">Carrinho</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Qtd</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-items">
+                  <!-- Os itens serão adicionados aqui -->
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between">
+                <span>Total:</span>
+                <span id="total-price">R$ 0,00</span>
+              </div>
+
+              <button onclick="toggleDeliveryInfo()">Delivery</button>
+              <button onclick="toggleRetiradaInfo()">Retira no local</button>
+
+              <div id="delivery-info" style="display: none">
+                <h5>Informações para entrega</h5>
+                <form id="delivery-form">
+                  <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" required />
+                  </div>
+                  <div class="mb-3">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="endereco"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="bairro" class="form-label">Bairro</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="bairro"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cidade"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="forma-pagamento" class="form-label"
+                      >Forma de Pagamento</label
+                    >
+                    <select class="form-select" id="forma-pagamento" required>
+                      <option value="Dinheiro">Dinheiro</option>
+                      <option value="Crédito MasterCard">
+                        Crédito MasterCard
+                      </option>
+                      <option value="Crédito VISA">Crédito VISA</option>
+                      <option value="Débito ELO">Débito ELO</option>
+                      <option value="Débito MasterCard">
+                        Débito MasterCard
+                      </option>
+                      <option value="Débito VISA">Débito VISA</option>
+                      <option value="PIX">PIX</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Informações para retirada no local -->
+
+              <div id="retirada-info" style="display: none">
+                <h5>Informações para retirada no local</h5>
+                <form id="retirada-form">
+                  <div class="mb-3">
+                    <label for="nome-retirada" class="form-label"
+                      >Nome Completo</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome-retirada"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone-retirada" class="form-label"
+                      >Telefone</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone-retirada"
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="confirm-order">
+                Confirmar Pedido
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voltar">
+        <a href="../../index.html" class="btn">Volta</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../js/js/lanche1.js"></script>
+  </body>
+</html>

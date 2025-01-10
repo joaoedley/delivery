@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("/image/Papel de parede comercial chalkboard P&B.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.Primeira-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.preco {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.opcoes {
+  text-align: left;
+  background-color: #dfb989;
+  border-radius: 10px;
+}
+
+.opcoes h2 {
+  font-size: 18px;
+  color: #000000;
+  background-color: #b36103;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.opcoes p {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 10px;
+  background-color: rgb(212, 129, 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  font-size: 14px;
+  color: #000000;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+.voltar {
+  position: fixed;
+  background-color: #ff9900;
+  bottom: 10px;
+  left: 20px;
+  border-radius: 20px;
+}
+
+/* Estilo para o carrinho fixado */
+.cart-button {
+  position: fixed;
+  bottom: 1px;
+  right: 20px;
+  background-color: #ff9900;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.cart-button:hover {
+  background-color: #e68a00;
+}
+
+.modal-header {
+  background-color: #ff8c00;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.modal-content {
+  padding: 16px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-quantity,
+.item-price {
+  width: 60px;
+  text-align: right;
+}
+
+.total {
+  font-weight: bold;
+  text-align: right;
+  margin-top: 16px;
+}
+
+.button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-section {
+  margin-top: 16px;
+}
+
+.form-section input,
+.form-section select {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  .main-class {
+    width: 100%;
+    max-width: none;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .opcoes h2 {
+    font-size: 16px;
+  }
+
+  .opcoes p {
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .cart-button {
+    width: 50px;
+    height: 50px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .voltar {
+    bottom: 60px;
+  }
+}
+
+/* Estilos para telas muito pequenas (celulares com telas muito pequenas) */
+@media (max-width: 480px) {
+  .main-class {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .preco {
+    font-size: 18px;
+  }
+
+  .opcoes h2 {
+    font-size: 14px;
+  }
+
+  .opcoes p {
+    font-size: 10px;
+  }
+
+  .form-section input,
+  .form-section select {
+    padding: 6px;
+  }
+
+  .button {
+    font-size: 0.9em;
+  }
+}
