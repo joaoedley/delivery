@@ -1,4 +1,3 @@
-// Carrega os itens do carrinho do localStorage ou cria um carrinho vazio se não existir
 let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 // Atualiza a interface do carrinho
@@ -25,7 +24,6 @@ function updateCartUI() {
   totalPriceEl.textContent = `R$ ${total.toFixed(2)}`;
   cartCounter.textContent = cartItems.length; // Atualiza o contador fora do modal
 
-  // Adiciona o evento de remoção de item no carrinho
   document.querySelectorAll(".remove-item-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const itemIndex = e.target.dataset.index;
@@ -36,18 +34,15 @@ function updateCartUI() {
   });
 }
 
-// Salva o carrinho no localStorage
 function saveCartToLocalStorage() {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
-// Adiciona o item ao carrinho
 document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const name = e.target.dataset.name;
     const price = parseFloat(e.target.dataset.price);
 
-    // Captura os valores das seleções do pão, ponto da carne e adicionais
     const selectedPao =
       document.querySelector('input[name="pao"]:checked')?.value ||
       "Não selecionado";
@@ -59,10 +54,8 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
         .map((checkbox) => checkbox.dataset.name)
         .join(", ") || "Nenhum adicional";
 
-    // Cria um nome único para o item, incluindo as opções selecionadas
     const itemName = `${name} | Pão: ${selectedPao} | Ponto da Carne: ${selectedPontoCarne} | Adicionais: ${selectedAdicionais}`;
 
-    // Verifica se o item já existe no carrinho
     const existingItem = cartItems.find((item) => item.name === itemName);
     if (existingItem) {
       existingItem.quantity += 1; // Incrementa a quantidade
@@ -75,7 +68,6 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
   });
 });
 
-// Alterna as informações de delivery e retirada
 function toggleDeliveryInfo() {
   const deliveryInfo = document.getElementById("delivery-info");
   const retiradaInfo = document.getElementById("retirada-info");
@@ -123,19 +115,16 @@ document.getElementById("confirm-order").addEventListener("click", () => {
     formType = "retirada";
   }
 
-  // Verifica se o formulário está preenchido
   if (!isFormValid) {
     alert("Por favor, preencha todas as informações.");
     return;
   }
 
-  // Verifica se há itens no carrinho
   if (cartItems.length === 0) {
     alert("Seu carrinho está vazio.");
     return;
   }
 
-  // Monta a mensagem para o WhatsApp
   let mensagem = `Olá, gostaria de fazer um pedido:\n${cartItems
     .map(
       (item) => `${item.quantity}x ${item.name} - R$ ${item.price.toFixed(2)}`
@@ -144,7 +133,6 @@ document.getElementById("confirm-order").addEventListener("click", () => {
     document.getElementById("total-price").textContent
   }`;
 
-  // Adiciona as informações de entrega ou retirada
   if (formType === "entrega") {
     mensagem += `
 Nome: ${formData.nome}
@@ -158,18 +146,15 @@ Telefone: ${formData.telefone}
 Retirada no local`;
   }
 
-  const whatsappUrl = `https://api.whatsapp.com/send/?phone=87999927809&text&type=phone_number&app_absent=0${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/5587999927809${encodeURIComponent(
     mensagem
   )}`;
 
-  // Abre o link do WhatsApp
   window.open(whatsappUrl, "_blank");
 
-  // Limpa o carrinho e atualiza o localStorage
   cartItems = [];
   saveCartToLocalStorage();
   updateCartUI();
 });
 
-// Inicializa o carrinho ao carregar a página
 updateCartUI();
