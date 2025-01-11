@@ -73,29 +73,21 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
     const name = e.target.dataset.name;
     const price = parseFloat(e.target.dataset.price);
 
-    const selectedPao =
-      document.querySelector('input[name="pao"]:checked')?.value ||
-      "Não selecionado";
-    const selectedPontoCarne =
-      document.querySelector('input[name="ponto_carne"]:checked')?.value ||
-      "Não selecionado";
-
     // Captura os adicionais selecionados
     let adicionais = Array.from(
-      document.querySelectorAll(".adicional-checkbox:checked")
+      document.querySelectorAll(".refri-checkbox:checked")
     );
 
     const selectedAdicionais =
       adicionais.map((checkbox) => checkbox.dataset.name).join(", ") ||
-      "Nenhum adicional";
+      "Nenhum";
 
     const adicionaisPrice = adicionais
       .map((checkbox) => parseFloat(checkbox.dataset.price))
       .reduce((acc, curr) => acc + curr, 0);
 
     const totalItemPrice = price + adicionaisPrice;
-
-    const itemName = `${name} | Pão: ${selectedPao} | Ponto da Carne: ${selectedPontoCarne} | Adicionais: ${selectedAdicionais}`;
+    const itemName = `${name} | Adicionais: ${selectedAdicionais}`;
 
     const existingItem = cartItems.find((item) => item.name === itemName);
     if (existingItem) {
@@ -107,30 +99,6 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
     saveCartToLocalStorage();
     updateCartUI();
   });
-});
-
-// Funções de alternância para as opções de entrega e retirada
-function toggleDeliveryInfo() {
-  const deliveryInfo = document.getElementById("delivery-info");
-  const retiradaInfo = document.getElementById("retirada-info");
-
-  deliveryInfo.style.display =
-    deliveryInfo.style.display === "none" ? "block" : "none";
-  retiradaInfo.style.display = "none";
-}
-
-function toggleRetiradaInfo() {
-  const retiradaInfo = document.getElementById("retirada-info");
-  const deliveryInfo = document.getElementById("delivery-info");
-
-  retiradaInfo.style.display =
-    retiradaInfo.style.display === "none" ? "block" : "none";
-  deliveryInfo.style.display = "none";
-}
-
-// Finaliza o pedido
-document.getElementById("confirm-order").addEventListener("click", () => {
-  // Lógica de finalização do pedido (mantida igual ao seu código original)
 });
 
 // Inicializa a interface do carrinho
