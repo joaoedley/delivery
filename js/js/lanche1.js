@@ -130,7 +130,78 @@ function toggleRetiradaInfo() {
 
 // Finaliza o pedido
 document.getElementById("confirm-order").addEventListener("click", () => {
-  // Lógica de finalização do pedido (mantida igual ao seu código original)
+  const isDelivery =
+    document.getElementById("delivery-info").style.display === "block";
+  const isRetirada =
+    document.getElementById("retirada-info").style.display === "block";
+  let mensagem = "Resumo do Pedido:\n";
+
+  // Lista os itens do carrinho
+  cartItems.forEach((item) => {
+    mensagem += `${item.quantity}x ${item.name} - R$ ${(
+      item.price * item.quantity
+    ).toFixed(2)}\n`;
+  });
+
+  mensagem += `Total: ${
+    document.getElementById("total-price").textContent
+  }\n\n`;
+
+  if (isDelivery) {
+    const nome = document.getElementById("nome").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+    const cep = document.getElementById("cep").value.trim();
+    const endereco = document.getElementById("endereco").value.trim();
+    const bairro = document.getElementById("bairro").value.trim();
+    const cidade = document.getElementById("cidade").value.trim();
+    const formaPagamento = document
+      .getElementById("forma-pagamento")
+      .value.trim();
+
+    if (
+      !nome ||
+      !telefone ||
+      !cep ||
+      !endereco ||
+      !bairro ||
+      !cidade ||
+      !formaPagamento
+    ) {
+      alert("Por favor, preencha todos os campos para Delivery.");
+      return;
+    }
+
+    mensagem += `Entrega:\nNome: ${nome}\nTelefone: ${telefone}\nCEP: ${cep}\n`;
+    mensagem += `Endereço: ${endereco}, ${bairro}, ${cidade}\nForma de Pagamento: ${formaPagamento}\n`;
+  } else if (isRetirada) {
+    const nomeRetirada = document.getElementById("nome-retirada").value.trim();
+    const telefoneRetirada = document
+      .getElementById("telefone-retirada")
+      .value.trim();
+
+    if (!nomeRetirada || !telefoneRetirada) {
+      alert("Preencha todos os campos para retirada.");
+      return;
+    }
+
+    mensagem += `Retirada:\nNome: ${nomeRetirada}\nTelefone: ${telefoneRetirada}\n`;
+  } else {
+    alert("Selecione uma opção de entrega ou retirada.");
+    return;
+  }
+
+  const numeroWhatsapp = "5587999927809"; // Substitua pelo número correto
+  const whatsappUrl = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(
+    mensagem
+  )}`;
+
+  window.open(whatsappUrl, "_blank");
+
+  cartItems = [];
+  saveCartToLocalStorage();
+  updateCartUI();
+
+  document.querySelector(".btn-close").click();
 });
 
 // Inicializa a interface do carrinho

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burguer Costela</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../../../css/cardapio/css/lanche1.css" />
+  </head>
+  <body>
+    <section class="Primeira-section">
+      <main class="main-class">
+        <div class="conteiner">
+          <h1>Portuguesa</h1>
+          <img src="../../image/pizza/portuguesa.jpeg" alt="" />
+          <p>
+            Molho de tomate, presunto, cebola, ovos cozidos, coberta com
+            mussarela especial, orégano e azeitonas pretas.
+          </p>
+          <span class="preco">R$ <strong>20,00</strong></span>
+
+          <!-- Opções de pão -->
+          <div class="opcoes">
+            <h2>Escolha o tamanho</h2>
+            <p>OBRIGATÓRIO | máximo 1</p>
+            <form>
+              <div
+                style="
+                  display: flex;
+                  gap: 50px;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: darkgrey;
+                "
+              >
+                <h5 style="margin: 0; font-size: 10px; font-weight: bold">
+                  Pizza Inteira
+                </h5>
+                <h5 style="margin: 0; font-size: 10px; font-weight: bold">
+                  Meia Pizza
+                </h5>
+              </div>
+              <label style="display: flex; align-items: center; gap: 10px">
+                P
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="Pequena"
+                />
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="metade-pequena"
+                  style="margin-left: 50px"
+                />
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px">
+                M
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="media"
+                />
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="metade-media"
+                  style="margin-left: 50px"
+                />
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px">
+                G
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="grande"
+                />
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="metade-grande"
+                  style="margin-left: 50px"
+                />
+              </label>
+              <label style="display: flex; align-items: center; gap: 10px">
+                F
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="familia"
+                />
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="Tamanho"
+                  value="metade-familia"
+                  style="margin-left: 50px"
+                />
+              </label>
+            </form>
+          </div>
+
+          <!-- Adicionais -->
+          <div class="opcoes">
+            <h2>Algum adicional?</h2>
+            <p>Opcional</p>
+            <form>
+              <form>
+                <label for="option">Click para Escolha</label>
+                <select name="adicional" id="opcoes">
+                  <option value="catupiry">Catupiry 3,00</option>
+                  <option value="azeitonas">Azeitonas 2,00</option>
+                  <option value="tomate">Tomate 1,00</option>
+                  <option value="queijo_mussarela">
+                    Queijo Mussarela 2,00
+                  </option>
+                  <option value="alho_frito">Alho frito 1,00</option>
+                </select>
+              </form>
+            </form>
+          </div>
+          <button
+            class="add-to-cart-btn"
+            data-name="portuguesa"
+            data-price="20.00"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </main>
+    </section>
+
+    <footer>
+      <!-- Botão do carrinho -->
+      <div
+        class="cart-button"
+        data-bs-toggle="modal"
+        data-bs-target="#cartModal"
+      >
+        <i class="bi bi-cart"></i>
+        <span id="cart-count">0</span>
+      </div>
+
+      <!-- Modal do carrinho -->
+      <div
+        class="modal fade"
+        id="cartModal"
+        tabindex="-1"
+        aria-labelledby="cartModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cartModalLabel">Carrinho</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Qtd</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-items">
+                  <!-- Os itens serão adicionados aqui -->
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between">
+                <span>Total:</span>
+                <span id="total-price">R$ 0,00</span>
+              </div>
+
+              <button onclick="toggleDeliveryInfo()">Delivery</button>
+              <button onclick="toggleRetiradaInfo()">Retira no local</button>
+
+              <div id="delivery-info" style="display: none">
+                <h5>Informações para entrega</h5>
+                <form id="delivery-form">
+                  <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" required />
+                  </div>
+                  <div class="mb-3">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="endereco"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="bairro" class="form-label">Bairro</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="bairro"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cidade"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="forma-pagamento" class="form-label"
+                      >Forma de Pagamento</label
+                    >
+                    <select class="form-select" id="forma-pagamento" required>
+                      <option value="Dinheiro">Dinheiro</option>
+                      <option value="Crédito MasterCard">
+                        Crédito MasterCard
+                      </option>
+                      <option value="Crédito VISA">Crédito VISA</option>
+                      <option value="Débito ELO">Débito ELO</option>
+                      <option value="Débito MasterCard">
+                        Débito MasterCard
+                      </option>
+                      <option value="Débito VISA">Débito VISA</option>
+                      <option value="PIX">PIX</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Informações para retirada no local -->
+
+              <div id="retirada-info" style="display: none">
+                <h5>Informações para retirada no local</h5>
+                <form id="retirada-form">
+                  <div class="mb-3">
+                    <label for="nome-retirada" class="form-label"
+                      >Nome Completo</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome-retirada"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone-retirada" class="form-label"
+                      >Telefone</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone-retirada"
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="confirm-order">
+                Confirmar Pedido
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voltar">
+        <a href="../pizzaria/pizzaria-index.html" class="btn">Volta</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/js/pizza1.js"></script>
+  </body>
+</html>

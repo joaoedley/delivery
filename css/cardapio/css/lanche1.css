@@ -99,6 +99,10 @@ input[type="radio"] {
   border-radius: 20px;
 }
 
+input[type="radio"] {
+  margin: 0; /* Move o rádio para a direita */
+}
+
 /* Estilo para o carrinho fixado */
 .cart-button {
   position: fixed;
