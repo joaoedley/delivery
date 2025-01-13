@@ -19,120 +19,147 @@
     <section class="Primeira-section">
       <main class="main-class">
         <div class="conteiner">
-          <h1>Doce</h1>
-          <img src="../../image/pizza/doce.jpg" alt="" />
-          <p>Chocolate, letie, leite condençado e Chocolate</p>
-          <span class="preco">R$ <strong>10,00</strong></span>
-
-          <!-- Opções de pão -->
-          <div class="opcoes">
-            <h2>Escolha o tamanho</h2>
-            <p>OBRIGATÓRIO | máximo 1</p>
-            <form>
-              <div
-                style="
-                  display: flex;
-                  gap: 50px;
-                  align-items: center;
-                  justify-content: center;
-                  background-color: darkgrey;
-                "
-              >
-                <h5 style="margin: 0; font-size: 10px; font-weight: bold">
-                  Pizza Inteira
-                </h5>
-                <h5 style="margin: 0; font-size: 10px; font-weight: bold">
-                  Meia Pizza
-                </h5>
-              </div>
-              <label style="display: flex; align-items: center; gap: 10px">
-                P
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="Pequena"
-                />
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="metade-pequena"
-                  style="margin-left: 50px"
-                />
-              </label>
-              <label style="display: flex; align-items: center; gap: 10px">
-                M
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="media"
-                />
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="metade-media"
-                  style="margin-left: 50px"
-                />
-              </label>
-              <label style="display: flex; align-items: center; gap: 10px">
-                G
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="grande"
-                />
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="metade-grande"
-                  style="margin-left: 50px"
-                />
-              </label>
-              <label style="display: flex; align-items: center; gap: 10px">
-                F
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="familia"
-                />
-                <input
-                  type="radio"
-                  class="tipo-pao-checkbox"
-                  name="Tamanho"
-                  value="metade-familia"
-                  style="margin-left: 50px"
-                />
-              </label>
-            </form>
-          </div>
+          <h1>Burguer Costela</h1>
+          <img
+            src="../../image/hanburguer/refigerante.jpg"
+            alt="Hamburguer Costela"
+          />
+          <p>Escolha seu refri.</p>
+          <span class="preco">R$ <strong></strong></span>
 
           <!-- Adicionais -->
           <div class="opcoes">
-            <h2>Algum adicional?</h2>
-            <p>Opcional</p>
+            <h2>Escolha qual voce quer!</h2>
+            <h2>Valores</h2>
+            <p>Lata</p>
             <form>
-              <form>
-                <label for="option">Click para Escolha</label>
-                <select name="adicional" id="opcoes">
-                  <option value="nada">Nada 00,00</option>
-                  <option value="catupiry">Catupiry 3,00</option>
-                  <option value="azeitonas">Azeitonas 2,00</option>
-                  <option value="tomate">Tomate 1,00</option>
-                  <option value="queijo_mussarela">
-                    Queijo Mussarela 2,00
-                  </option>
-                  <option value="alho_frito">Alho frito 1,00</option>
-                </select>
-              </form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Coca Cola Lata"
+                  data-price="5.00"
+                />
+                Coca Cola lata R$5,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Pepsi Lata"
+                  data-price="5.00"
+                />
+                Pepsi lata R$5,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Soda Lata"
+                  data-price="5.00"
+                />
+                Soda lata R$5,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Guarana Lata"
+                  data-price="5.00"
+                />
+                Guarana lata R$5,00
+              </label>
             </form>
           </div>
-          <button class="add-to-cart-btn" data-name="Doce" data-price="10.00">
+
+          <!-- Adicionais 1L -->
+          <div class="opcoes">
+            <h2>Valores</h2>
+            <p>1L</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Coca Cola 1L"
+                  data-price="10.00"
+                />
+                Coca Cola 1L R$10,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Pepsi 1L"
+                  data-price="10.00"
+                />
+                Pepsi 1L R$10,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Soda 1L"
+                  data-price="10.00"
+                />
+                Soda 1L R$10,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Guarana 1L"
+                  data-price="10.00"
+                />
+                Guarana 1L R$10,00
+              </label>
+            </form>
+          </div>
+
+          <!-- Adicionais 2L -->
+          <div class="opcoes">
+            <h2>Valores</h2>
+            <p>2L</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Coca Cola 2L"
+                  data-price="15.00"
+                />
+                Coca Cola 2L R$15,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Pepsi 2L"
+                  data-price="15.00"
+                />
+                Pepsi 2L R$15,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Soda 2L"
+                  data-price="15.00"
+                />
+                Soda 2L R$15,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Guarana 2L"
+                  data-price="15.00"
+                />
+                Guarana 2L R$15,00
+              </label>
+            </form>
+          </div>
+          <button class="add-to-cart-btn" data-name="Pedido" data-price="0">
             Adicionar ao Carrinho
           </button>
         </div>
@@ -309,12 +336,12 @@
         </div>
       </div>
       <div class="voltar">
-        <a href="../pizzaria/pizzaria-index.html" class="btn">Volta</a>
+        <a href="../../html/pizzaria/pizzaria-index.html" class="btn">Volta</a>
       </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/js/pizza1.js"></script>
+    <script src="../../js/js/refri.js"></script>
   </body>
 </html>

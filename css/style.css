@@ -87,7 +87,19 @@ body::-webkit-scrollbar-thumb:hover {
   border-bottom: 4px solid #ff5;
   color: #ff5;
 }
-
+/* Estilos principais da carta */
+.carta {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px; /* bordas arredondadas para o estilo de carta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* sombra para dar profundidade */
+  font-family: "Arial", sans-serif; /* fonte simples e moderna */
+  color: #333; /* cor de texto escura para legibilidade */
+  line-height: 1.6; /* espaçamento entre linhas */
+}
 /* Primeira seção */
 .primeira-section {
   width: 100%;

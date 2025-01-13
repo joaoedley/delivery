@@ -77,6 +77,16 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
       document.querySelector('input[name="Tamanho"]:checked')?.value ||
       "Não selecionado";
 
+    // Mapeando os preços baseados no tamanho
+    const sizePrices = {
+      P: 10.0, // Exemplo de preço para tamanho P
+      M: 20.0, // Exemplo de preço para tamanho M
+      G: 30.0,
+      F: 40.0, // Exemplo de preço para tamanho G
+    };
+
+    const sizePrice = sizePrices[selectedTamanho] || 0; // Preço do tamanho, se selecionado, caso contrário 0
+
     // Captura o adicional selecionado do <select>
     const selectedAdicional = document.getElementById("opcoes").value;
     const adicionaisPrice = getAdicionalPrice(selectedAdicional);
@@ -100,6 +110,8 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
 // Função para pegar o preço do adicional
 function getAdicionalPrice(adicional) {
   switch (adicional) {
+    case "nada":
+      return 0.0;
     case "catupiry":
       return 3.0;
     case "azeitonas":
