@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burguer Costela</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/css/cardapio/css/lanche1.css" />
+  </head>
+  <body>
+    <section class="Primeira-section">
+      <main class="main-class">
+        <div class="conteiner">
+          <h1>Refrigerante</h1>
+          <img
+            src="../../../image/hanburguer/refigerante.jpg"
+            alt="Hamburguer Costela"
+          />
+          <p>Escolha seu refri.</p>
+          <span class="preco">R$ <strong></strong></span>
+
+          <!-- Adicionais -->
+          <div class="opcoes">
+            <h2>Escolha qual voce quer!</h2>
+            <h2>Valores</h2>
+            <p>Lata</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Coca Cola Lata"
+                  data-price="6.00"
+                />
+                Coca Cola lata R$6,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="guarana Lata"
+                  data-price="6.00"
+                />
+                Guarana lata R$6,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Soda Lata"
+                  data-price="6.00"
+                />
+                Soda lata R$6,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="sukita Lata"
+                  data-price="6.00"
+                />
+                Sukita lata R$6,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="skinka"
+                  data-price="6.00"
+                />
+                Skinka R$6,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Skol"
+                  data-price="5.00"
+                />
+                Skol R$5,00
+              </label>
+            </form>
+          </div>
+
+          <!-- jUNINHO -->
+          <div class="opcoes">
+            <h2>Valores</h2>
+            <p>Juninho</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Coca junhinho"
+                  data-price="3.00"
+                />
+                Coca junhinho R$3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Pepsi junhinho"
+                  data-price="3.00"
+                />
+                Pepsi junhinho R$3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Soda junhinho"
+                  data-price="3.00"
+                />
+                Soda junhinho R$3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Guarana junhinho"
+                  data-price="3.00"
+                />
+                Guarana junhinho R$3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Sukita junhinho"
+                  data-price="3.00"
+                />
+                Sukita junhinho R$3,00
+              </label>
+            </form>
+          </div>
+
+          <!-- Adicionais 1L -->
+          <div class="opcoes">
+            <h2>Valores</h2>
+            <p>1L</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Coca Cola 1L"
+                  data-price="9.00"
+                />
+                Coca Cola 1L R$9,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Guarana 1L"
+                  data-price="9.00"
+                />
+                Guarana 1L R$9,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Soda 1L"
+                  data-price="9.00"
+                />
+                Soda 1L R$9,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="refri-checkbox"
+                  data-name="Sukita 1L"
+                  data-price="9.00"
+                />
+                Sukita 1L R$9,00
+              </label>
+            </form>
+          </div>
+
+          <button class="add-to-cart-btn" data-name="Pedido" data-price="0">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </main>
+    </section>
+
+    <footer>
+      <!-- Botão do carrinho -->
+      <div
+        class="cart-button"
+        data-bs-toggle="modal"
+        data-bs-target="#cartModal"
+      >
+        <i class="bi bi-cart"></i>
+        <span id="cart-count">0</span>
+      </div>
+
+      <!-- Modal do carrinho -->
+      <div
+        class="modal fade"
+        id="cartModal"
+        tabindex="-1"
+        aria-labelledby="cartModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cartModalLabel">Carrinho</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Qtd</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-items">
+                  <!-- Os itens serão adicionados aqui -->
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between">
+                <span>Total:</span>
+                <span id="total-price">R$ 0,00</span>
+              </div>
+
+              <button onclick="toggleDeliveryInfo()">Delivery</button>
+              <button onclick="toggleRetiradaInfo()">Retira no local</button>
+
+              <div id="delivery-info" style="display: none">
+                <h5>Informações para entrega</h5>
+                <form id="delivery-form">
+                  <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" required />
+                  </div>
+                  <div class="mb-3">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="endereco"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="bairro" class="form-label">Bairro</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="bairro"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cidade"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="forma-pagamento" class="form-label"
+                      >Forma de Pagamento</label
+                    >
+                    <select class="form-select" id="forma-pagamento" required>
+                      <option value="Dinheiro">Dinheiro</option>
+                      <option value="Crédito MasterCard">
+                        Crédito MasterCard
+                      </option>
+                      <option value="Crédito VISA">Crédito VISA</option>
+                      <option value="Débito ELO">Débito ELO</option>
+                      <option value="Débito MasterCard">
+                        Débito MasterCard
+                      </option>
+                      <option value="Débito VISA">Débito VISA</option>
+                      <option value="PIX">PIX</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Informações para retirada no local -->
+
+              <div id="retirada-info" style="display: none">
+                <h5>Informações para retirada no local</h5>
+                <form id="retirada-form">
+                  <div class="mb-3">
+                    <label for="nome-retirada" class="form-label"
+                      >Nome Completo</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome-retirada"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone-retirada" class="form-label"
+                      >Telefone</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone-retirada"
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="confirm-order">
+                Confirmar Pedido
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voltar">
+        <a href="/html/ratao lanche/ratao.html" class="btn">Volta</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/js/refri.js"></script>
+  </body>
+</html>

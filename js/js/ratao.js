@@ -1,11 +1,11 @@
 let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-const deliveryFee = 3.0; // Taxa de entrega fixa
+let isDelivery = false; // Corrigido: Inicializa a variável
 
 // Atualiza a interface do carrinho
 function updateCartUI() {
   const cartTable = document.getElementById("cart-items");
   const totalPriceEl = document.getElementById("total-price");
-  const cartCounter = document.getElementById("cart-count"); // Contador de itens fora do modal
+  const cartCounter = document.getElementById("cart-count");
   let total = 0;
 
   // Limpa a tabela de itens no carrinho
@@ -14,32 +14,34 @@ function updateCartUI() {
   cartItems.forEach((item, index) => {
     total += item.price * item.quantity;
 
-    cartTable.innerHTML += `
-      <tr>
-        <td>${item.name}</td>
-        <td>
-          <button class="decrease-qty-btn" data-index="${index}">-</button>
-          ${item.quantity}
-          <button class="increase-qty-btn" data-index="${index}">+</button>
-        </td>
-        <td>R$ ${(item.price * item.quantity).toFixed(2)}</td>
-        <td><button class="remove-item-btn" data-index="${index}">Remover</button></td>
-      </tr>`;
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>
+        <button class="decrease-qty-btn" data-index="${index}">-</button>
+        ${item.quantity}
+        <button class="increase-qty-btn" data-index="${index}">+</button>
+      </td>
+      <td>R$ ${(item.price * item.quantity).toFixed(2)}</td>
+      <td><button class="remove-item-btn" data-index="${index}">Remover</button></td>
+    `;
+    cartTable.appendChild(row);
   });
 
-  // Adiciona a taxa de entrega, se for delivery
-  if (document.getElementById("delivery-info").style.display === "block") {
+  // Adiciona a taxa de entrega se for delivery
+  if (isDelivery) {
+    const deliveryFee = 3; // Taxa de entrega de R$3,00
     total += deliveryFee;
   }
 
   totalPriceEl.textContent = `R$ ${total.toFixed(2)}`;
-  cartCounter.textContent = cartItems.length; // Atualiza o contador fora do modal
+  cartCounter.textContent = cartItems.length;
 
   // Adiciona os eventos para os botões "+" e "-"
   document.querySelectorAll(".increase-qty-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const itemIndex = e.target.dataset.index;
-      cartItems[itemIndex].quantity += 1; // Incrementa a quantidade
+      cartItems[itemIndex].quantity += 1;
       saveCartToLocalStorage();
       updateCartUI();
     });
@@ -49,9 +51,9 @@ function updateCartUI() {
     btn.addEventListener("click", (e) => {
       const itemIndex = e.target.dataset.index;
       if (cartItems[itemIndex].quantity > 1) {
-        cartItems[itemIndex].quantity -= 1; // Decrementa a quantidade
+        cartItems[itemIndex].quantity -= 1;
       } else {
-        cartItems.splice(itemIndex, 1); // Remove o item se a quantidade for 0
+        cartItems.splice(itemIndex, 1);
       }
       saveCartToLocalStorage();
       updateCartUI();
@@ -62,7 +64,7 @@ function updateCartUI() {
   document.querySelectorAll(".remove-item-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const itemIndex = e.target.dataset.index;
-      cartItems.splice(itemIndex, 1); // Remove o item
+      cartItems.splice(itemIndex, 1);
       saveCartToLocalStorage();
       updateCartUI();
     });
@@ -79,21 +81,28 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
     const name = e.target.dataset.name;
     const price = parseFloat(e.target.dataset.price);
 
-    // Captura os adicionais selecionados
-    let adicionais = Array.from(
-      document.querySelectorAll(".refri-checkbox:checked")
+    const selectedPao =
+      document.querySelector('input[name="retirar"]:checked')?.value ||
+      "Não selecionado";
+    const selectedPontoCarne =
+      document.querySelector('input[name="ponto_carne"]:checked')?.value ||
+      "Não selecionado";
+
+    const adicionais = Array.from(
+      document.querySelectorAll(".adicional-checkbox:checked")
     );
 
     const selectedAdicionais =
       adicionais.map((checkbox) => checkbox.dataset.name).join(", ") ||
-      "Nenhum";
+      "Nenhum adicional";
 
     const adicionaisPrice = adicionais
       .map((checkbox) => parseFloat(checkbox.dataset.price))
       .reduce((acc, curr) => acc + curr, 0);
 
     const totalItemPrice = price + adicionaisPrice;
-    const itemName = `${name} | Adicionais: ${selectedAdicionais}`;
+
+    const itemName = `${name} | retirada: ${selectedPao} | Ponto da Carne: ${selectedPontoCarne} | Adicionais: ${selectedAdicionais}`;
 
     const existingItem = cartItems.find((item) => item.name === itemName);
     if (existingItem) {
@@ -107,50 +116,85 @@ document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
   });
 });
 
-// Alterna entre os formulários de Delivery e Retirada
+// Função para pegar o preço do adicional
+function getAdicionalPrice(adicional) {
+  switch (adicional) {
+    case "nada":
+      return 0.0;
+    case "coca-lata":
+      return 6.0;
+    case "Guarana-lata":
+      return 6.0;
+    case "soda-lata":
+      return 6.0;
+    case "sukita-lata":
+      return 6.0;
+    case "coca-juninho":
+      return 3.0;
+    case "Guarana-juninho":
+      return 3.0;
+    case "soda-juninho":
+      return 3.0;
+    case "sukita-juninho":
+      return 3.0;
+    case "pepsi-juninho":
+      return 3.0;
+    case "coca-1L":
+      return 9.0;
+    case "Guarana-1L":
+      return 9.0;
+    case "soda-1L":
+      return 9.0;
+    case "sukita-1L":
+      return 9.0;
+    default:
+      return 0;
+  }
+}
+
+// Alternância de opções de entrega e retirada
 function toggleDeliveryInfo() {
-  document.getElementById("delivery-info").style.display = "block";
-  document.getElementById("retirada-info").style.display = "none";
+  const deliveryInfo = document.getElementById("delivery-info");
+  const retiradaInfo = document.getElementById("retirada-info");
+
+  isDelivery = deliveryInfo.style.display === "none";
+  deliveryInfo.style.display = isDelivery ? "block" : "none";
+  retiradaInfo.style.display = "none";
 }
 
 function toggleRetiradaInfo() {
-  document.getElementById("delivery-info").style.display = "none";
-  document.getElementById("retirada-info").style.display = "block";
+  const retiradaInfo = document.getElementById("retirada-info");
+  const deliveryInfo = document.getElementById("delivery-info");
+
+  isDelivery = false;
+  retiradaInfo.style.display =
+    retiradaInfo.style.display === "none" ? "block" : "none";
+  deliveryInfo.style.display = "none";
 }
 
 // Finaliza o pedido
 document.getElementById("confirm-order").addEventListener("click", () => {
-  if (cartItems.length === 0) {
-    alert("O carrinho está vazio. Adicione itens antes de confirmar.");
-    return;
-  }
-
-  const isDelivery =
-    document.getElementById("delivery-info").style.display === "block";
   const isRetirada =
     document.getElementById("retirada-info").style.display === "block";
   let mensagem = "Resumo do Pedido:\n";
+  let total = 0; // Variável para calcular o total com a taxa de entrega
 
-  // Lista os itens do carrinho
+  // Lista os itens do carrinho e soma o total
   cartItems.forEach((item) => {
+    total += item.price * item.quantity;
     mensagem += `${item.quantity}x ${item.name} - R$ ${(
       item.price * item.quantity
     ).toFixed(2)}\n`;
   });
 
-  let total = parseFloat(
-    document
-      .getElementById("total-price")
-      .textContent.replace("R$ ", "")
-      .replace(",", ".")
-  );
-
   // Adiciona a taxa de entrega se for delivery
   if (isDelivery) {
-    mensagem += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n`;
+    const deliveryFee = 3; // Taxa de entrega de R$3,00
     total += deliveryFee;
+    mensagem += `Taxa de entrega: R$ ${deliveryFee.toFixed(2)}\n`;
   }
 
+  // Agora inclui o total com a entrega no final da mensagem
   mensagem += `Total: R$ ${total.toFixed(2)}\n\n`;
 
   // Verifica se é delivery ou retirada
@@ -203,44 +247,12 @@ document.getElementById("confirm-order").addEventListener("click", () => {
 
   window.open(whatsappUrl, "_blank");
 
-  // Limpa os campos de cliente após o pedido
-  clearCustomerInfo();
-
-  // Limpa o carrinho após finalizar o pedido
   cartItems = [];
   saveCartToLocalStorage();
   updateCartUI();
 
   document.querySelector(".btn-close").click();
 });
-
-// Função para limpar as informações do cliente
-function clearCustomerInfo() {
-  // Limpar os campos de informações de entrega
-  document.getElementById("nome").value = "";
-  document.getElementById("telefone").value = "";
-  document.getElementById("cep").value = "";
-  document.getElementById("endereco").value = "";
-  document.getElementById("bairro").value = "";
-  document.getElementById("cidade").value = "";
-  document.getElementById("forma-pagamento").value = "";
-
-  // Limpar os campos de informações de retirada
-  document.getElementById("nome-retirada").value = "";
-  document.getElementById("telefone-retirada").value = "";
-
-  // Garantir que o formulário de entrega ou retirada não fique visível
-  document.getElementById("delivery-info").style.display = "none";
-  document.getElementById("retirada-info").style.display = "none";
-
-  // Redefinir a opção de escolha para "Retirada" ou "Delivery"
-  const deliveryRadio = document.querySelector(
-    'input[name="delivery"]:checked'
-  );
-  if (deliveryRadio) {
-    deliveryRadio.checked = false;
-  }
-}
 
 // Inicializa a interface do carrinho
 updateCartUI();

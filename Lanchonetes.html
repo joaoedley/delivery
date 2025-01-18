@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>All Delivery</title>
+  </head>
+  <body>
+    <header class="content">
+      <div class="logo">
+        <button class="hamburger" aria-label="Menu">☰</button>
+
+        <img
+          src="./image/Black_White_Yellow_Simple_Initial_Name_Logo__1_-removebg-preview.png"
+          alt="Logo All Delivery"
+        />
+        <h1>AllDelivery</h1>
+      </div>
+      <nav>
+        <ul class="lista-menu">
+          <li><a href="/index.html">Início</a></li>
+          <li><a href="/sobre.html">Sobre</a></li>
+
+          <li><a href="#">Lanchonetes</a></li>
+          <li>
+            <a
+              href="https://www.instagram.com/direct/t/joaoedleyy"
+              target="_blank"
+              aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://api.whatsapp.com/send/?phone=5587999927809&"
+              aria-label="WhatsApp"
+              ><i class="bi bi-whatsapp"></i
+            ></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+        padding-left: 50px;
+      "
+    >
+      <h1>Alguns de nossos clientes pelo Brasil</h1>
+    </div>
+    <div
+      class="container"
+      style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center"
+    >
+      <!-- Card 1 -->
+      <div
+        class="card"
+        style="
+          flex: 1 1 calc(33.33% - 20px);
+          max-width: calc(33.33% - 20px);
+          height: 350px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          background-color: #fff;
+          text-align: center;
+          transition: transform 0.2s ease-in-out;
+        "
+        onmouseover="this.style.transform = 'scale(1.05)'"
+        onmouseout="this.style.transform = 'scale(1)'"
+      >
+        <div
+          class="imagens-exemplo"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          "
+        >
+          <a href="/html/ratao lanche/ratao.html">
+            <img
+              src="/html/ratao lanche/lanche/img/logo ratao.png"
+              alt="Logo exemplo 1"
+              class="img-exemplo"
+              style="
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+                transition: all 0.2s ease-in-out;
+              "
+            />
+          </a>
+        </div>
+        <div class="card-content" style="margin-top: 10px">
+          <h3 style="font-size: 18px; margin: 10px 0; color: #333">
+            Ratão Lanche
+          </h3>
+          <p style="font-size: 14px; color: #777; margin-bottom: 10px">
+            Clique no logo para acessar o cardápio!
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      
+        <!-- Conteúdo do segundo card -->
+      </div>
+    </div>
+
+    <style>
+      /* Estilo geral do container */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      /* Estilo geral do card */
+      .card {
+        flex: 1 1 calc(33.33% - 20px); /* 3 cards por linha */
+        max-width: calc(33.33% - 20px);
+        height: 350px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background-color: #fff;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .imagens-exemplo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Responsividade para dispositivos móveis */
+      @media (max-width: 768px) {
+        .card {
+          flex: 1 1 calc(50% - 20px); /* 2 cards por linha no celular */
+          max-width: calc(50% - 20px);
+          height: auto; /* Ajusta a altura */
+        }
+
+        .imagens-exemplo img {
+          width: 80px; /* Reduz a imagem */
+          height: 80px;
+        }
+
+        .card-content h3 {
+          font-size: 16px; /* Texto menor */
+        }
+
+        .card-content p {
+          font-size: 12px; /* Texto menor */
+        }
+      }
+
+      /* Responsividade para telas muito pequenas */
+      @media (max-width: 480px) {
+        .card {
+          flex: 1 1 100%; /* 1 card por linha */
+          max-width: 100%;
+        }
+      }
+    </style>
+
+    <script src="/js/index.js"></script>
+  </body>
+</html>

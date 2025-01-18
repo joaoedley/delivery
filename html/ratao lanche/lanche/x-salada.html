@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burguer Costela</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../../../css/cardapio/css/lanche1.css" />
+  </head>
+  <body>
+    <section class="Primeira-section">
+      <main class="main-class">
+        <div class="conteiner">
+          <h1>X-SALADA</h1>
+          <img src="/html/ratao lanche/lanche/img/xsalada.jpg" alt="X-SALADA" />
+          <p>Pão, presunto, carne, queijo, salada e batata.</p>
+          <span class="preco">R$ <strong>12,00</strong></span>
+
+          <!-- Opções -->
+          <div class="opcoes">
+            <h2>O que você quer tirar?</h2>
+            <p>OBRIGATÓRIO | máximo 1</p>
+            <form>
+              <label>
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="retirar"
+                  value="Nada"
+                />
+                Nada
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="retirar"
+                  value="Sem creme de milho"
+                />
+                Sem creme de milho
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="retirar"
+                  value="Sem verdura"
+                />
+                Sem verdura
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="retirar"
+                  value="Sem presunto"
+                />
+                Sem presunto
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="retirar"
+                  value="Sem queijo"
+                />
+                Sem queijo
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  class="tipo-pao-checkbox"
+                  name="retirar"
+                  value="Sem carne"
+                />
+                Sem carne
+              </label>
+            </form>
+          </div>
+
+          <!-- Opções de ponto da carne -->
+          <div class="opcoes">
+            <h2>Ponto da carne?</h2>
+            <p>OBRIGATÓRIO | máximo 1</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="ponto-carne-checkbox"
+                  name="ponto_carne"
+                  value="mal_passada"
+                />
+                Mal passada
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="ponto-carne-checkbox"
+                  name="ponto_carne"
+                  value="ao_ponto"
+                />
+                Ao ponto
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="ponto-carne-checkbox"
+                  name="ponto_carne"
+                  value="bem_passada"
+                />
+                Bem passada
+              </label>
+            </form>
+          </div>
+
+          <!-- Adicionais -->
+          <div class="opcoes">
+            <h2>Algum adicional?</h2>
+            <p>Opcional máximo 5</p>
+            <form>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Bacon"
+                  data-price="3.00"
+                />
+                Bacon 3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Calabresa"
+                  data-price="3.00"
+                />
+                Calabresa 3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Hamburguer"
+                  data-price="3.00"
+                />
+                Hamburguer 3,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Ovo"
+                  data-price="2.00"
+                />
+                Ovo 2,00
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  class="adicional-checkbox"
+                  data-name="Salsicha"
+                  data-price="2.00"
+                />
+                Salsicha 2,00
+              </label>
+            </form>
+          </div>
+          <button
+            class="add-to-cart-btn"
+            data-name="X-SALADA"
+            data-price="12.00"
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </main>
+    </section>
+
+    <footer>
+      <!-- Botão do carrinho -->
+      <div
+        class="cart-button"
+        data-bs-toggle="modal"
+        data-bs-target="#cartModal"
+      >
+        <i class="bi bi-cart"></i>
+        <span id="cart-count">0</span>
+      </div>
+
+      <!-- Modal do carrinho -->
+      <div
+        class="modal fade"
+        id="cartModal"
+        tabindex="-1"
+        aria-labelledby="cartModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="cartModalLabel">Carrinho</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Qtd</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-items">
+                  <!-- Os itens serão adicionados aqui -->
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between">
+                <span>Total:</span>
+                <span id="total-price">R$ 0,00</span>
+              </div>
+
+              <button onclick="toggleDeliveryInfo()">Delivery</button>
+              <button onclick="toggleRetiradaInfo()">Retira no local</button>
+
+              <div id="delivery-info" style="display: none">
+                <h5>Informações para entrega</h5>
+                <form id="delivery-form">
+                  <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" required />
+                  </div>
+                  <div class="mb-3">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="endereco"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="bairro" class="form-label">Bairro</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="bairro"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cidade"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="forma-pagamento" class="form-label"
+                      >Forma de Pagamento</label
+                    >
+                    <select class="form-select" id="forma-pagamento" required>
+                      <option value="Dinheiro">Dinheiro</option>
+                      <option value="Crédito MasterCard">
+                        Crédito MasterCard
+                      </option>
+                      <option value="Crédito VISA">Crédito VISA</option>
+                      <option value="Débito ELO">Débito ELO</option>
+                      <option value="Débito MasterCard">
+                        Débito MasterCard
+                      </option>
+                      <option value="Débito VISA">Débito VISA</option>
+                      <option value="PIX">PIX</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Informações para retirada no local -->
+
+              <div id="retirada-info" style="display: none">
+                <h5>Informações para retirada no local</h5>
+                <form id="retirada-form">
+                  <div class="mb-3">
+                    <label for="nome-retirada" class="form-label"
+                      >Nome Completo</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nome-retirada"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefone-retirada" class="form-label"
+                      >Telefone</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefone-retirada"
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="confirm-order">
+                Confirmar Pedido
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="voltar">
+        <a href="../ratao.html" class="btn">Volta</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../js/js/ratao.js"></script>
+  </body>
+</html>
